@@ -1,13 +1,72 @@
 [
-  {"name": "PaqLink health", "url": "https://paqlink.com/healthz", "expect": 200, "json_ok": "ok"},
-  {"name": "PaqLink scan redirect", "url": "https://paqlink.com/01/06001234567899", "expect": 307},
-  {"name": "PaqLink Console", "url": "https://admin.paqlink.com/login", "expect": 200, "contains": "Console"},
-  {"name": "StockBirdPro health", "url": "https://stockbirdpro.com/api/health", "expect": 200, "json_field": ["status", "ok"]},
-  {"name": "StockBirdPro site", "url": "https://stockbirdpro.com/", "expect": 200},
-  {"name": "StockBirdPro admin", "url": "https://admin.stockbirdpro.com/", "expect": 200},
-  {"name": "SpazaBoost health", "url": "https://spazaboost.co.za/health", "expect": 200, "json_field": ["status", "ok"]},
-  {"name": "SpazaBoost site", "url": "https://spazaboost.co.za/", "expect": 200},
-  {"name": "Mason Ark Holdings", "url": "https://masonarkholdings.co.za/", "expect": 200},
-  {"name": "CK Insurance Brokers", "url": "https://ckinsurancebrokers.co.za/", "expect": 200},
-  {"name": "Ops dashboard", "url": "https://ops.masonarkholdings.co.za/", "expect": 200}
+  {
+    "name": "PaqLink health",
+    "url": "https://paqlink.com/healthz",
+    "expect": 200,
+    "json_ok": "ok"
+  },
+  {
+    "name": "PaqLink scan redirect",
+    "url": "https://paqlink.com/01/06001234567899",
+    "expect": 307
+  },
+  {
+    "name": "PaqLink Console",
+    "url": "https://admin.paqlink.com/login",
+    "expect": 200,
+    "contains": "Console"
+  },
+  {
+    "name": "StockBirdPro health",
+    "url": "https://stockbirdpro.com/api/health",
+    "expect": 200,
+    "json_field": [
+      "status",
+      "ok"
+    ]
+  },
+  {
+    "name": "StockBirdPro site",
+    "url": "https://stockbirdpro.com/",
+    "expect": 200
+  },
+  {
+    "name": "StockBirdPro admin",
+    "url": "https://admin.stockbirdpro.com/",
+    "expect": 200
+  },
+  {
+    "name": "SpazaBoost health",
+    "url": "https://spazaboost.co.za/health",
+    "expect": 200,
+    "json_field": [
+      "status",
+      "ok"
+    ]
+  },
+  {
+    "name": "SpazaBoost site",
+    "url": "https://spazaboost.co.za/",
+    "expect": 200
+  },
+  {
+    "name": "Mason Ark Holdings",
+    "url": "https://masonarkholdings.co.za/",
+    "expect": 200
+  },
+  {
+    "name": "CK Insurance Brokers",
+    "url": "https://ckinsurancebrokers.co.za/",
+    "expect": 200
+  },
+  {
+    "name": "Ops dashboard",
+    "url": "https://ops.masonarkholdings.co.za/",
+    "expect": 200
+  },
+  {
+    "name": "Alert test",
+    "url": "https://paqlink.com/this-page-does-not-exist-alert-test",
+    "expect": 200
+  }
 ]

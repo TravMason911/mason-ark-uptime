@@ -19,13 +19,16 @@ def main():
                    capture_output=True)
     open_issues = json.loads(gh("issue", "list", "--label", LABEL, "--state", "open", "--json", "number,title"))
     by_title = {i["title"]: i["number"] for i in open_issues}
-    for r in results:
-        title = f"DOWN: {r['name']}"
-        if not r["ok"] and title not in by_title:
+    failing = {f"DOWN: {r['name']}": r for r in results if not r["ok"]}
+    for title, r in failing.items():
+        if title not in by_title:
             gh("issue", "create", "--label", LABEL, "--title", title, "--body",
                f"{r['url']}\n\n{r['problem']}\n\nChecked from GitHub Actions; this issue closes itself when the check passes again.")
-        elif r["ok"] and title in by_title:
-            gh("issue", "close", str(by_title[title]), "--comment", f"Recovered: {r['url']} answers normally again.")
+    # Close every open alert that is not failing now: recovered checks, and
+    # checks that were removed from checks.json.
+    for title, number in by_title.items():
+        if title not in failing:
+            gh("issue", "close", str(number), "--comment", "Recovered: passing again (or no longer checked).")
 
 
 if __name__ == "__main__":

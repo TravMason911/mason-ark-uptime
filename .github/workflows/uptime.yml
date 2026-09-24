@@ -1,0 +1,29 @@
+name: uptime
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check every site
+        id: check
+        continue-on-error: true
+        run: python3 check.py
+      - name: Open or close alert issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python3 alert.py
+      - name: Fail the run when something is down
+        if: steps.check.outcome == 'failure'
+        run: exit 1

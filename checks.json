@@ -67,6 +67,6 @@
   {
     "name": "Alert test",
     "url": "https://paqlink.com/this-page-does-not-exist-alert-test",
-    "expect": 200
+    "expect": 599
   }
 ]
